@@ -1,0 +1,3 @@
+@model Demo.Models.Libro
+@{ ViewData["Title"] = "Detalle del libro"; }
+<div class="form-page"><a class="back-link" asp-action="Index">← Volver al catálogo</a><div class="detail-card"><div class="detail-cover">@Model.Titulo.Substring(0, 1).ToUpper()</div><div><span class="eyebrow">FICHA DEL LIBRO</span><h1>@Model.Titulo</h1><p class="detail-author">@Model.AutorNombre</p><dl class="detail-list"><div><dt>ISBN</dt><dd>@Model.ISBN</dd></div><div><dt>Ejemplares disponibles</dt><dd><span class="stock">@Model.Ejemplares</span></dd></div></dl><div class="form-actions"><a class="btn btn-soft" asp-action="Edit" asp-route-id="@Model.LibroId">Editar</a><a class="btn btn-primary" asp-action="Index">Volver al catálogo</a></div></div></div></div>

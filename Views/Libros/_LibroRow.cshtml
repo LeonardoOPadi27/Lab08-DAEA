@@ -1,0 +1,2 @@
+@model Demo.Models.Libro
+<tr><td><a class="book-title" asp-action="Details" asp-route-id="@Model.LibroId">@Model.Titulo</a></td><td>@Model.AutorNombre</td><td><span class="isbn">@Model.ISBN</span></td><td class="text-center"><span class="stock @(Model.Ejemplares == 0 ? "stock-empty" : "")">@Model.Ejemplares</span></td><td class="text-end action-links"><a asp-action="Details" asp-route-id="@Model.LibroId">Ver</a><a asp-action="Edit" asp-route-id="@Model.LibroId">Editar</a><a class="danger-link" asp-action="Delete" asp-route-id="@Model.LibroId">Retirar</a></td></tr>

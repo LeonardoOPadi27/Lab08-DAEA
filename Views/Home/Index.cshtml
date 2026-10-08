@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<section class="hero">
+    <div>
+        <span class="eyebrow">GESTIÓN DE BIBLIOTECA</span>
+        <h1>Historias que esperan <em>su próxima lectura.</em></h1>
+        <p>Administra tu catálogo, registra socios y consulta los préstamos desde un mismo lugar.</p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" asp-controller="Libros" asp-action="Index">Ver catálogo <span>→</span></a>
+            <a class="btn btn-soft" asp-controller="Socios" asp-action="Create">Nuevo socio</a>
+        </div>
+    </div>
+    <div class="hero-art" aria-hidden="true"><div class="book book-one"></div><div class="book book-two"></div><div class="book book-three"></div><div class="sun"></div></div>
+</section>
+<section class="feature-grid">
+    <a asp-controller="Libros" asp-action="Index" class="feature-card"><span class="feature-icon">⌁</span><h2>Catálogo</h2><p>Busca y administra los libros disponibles.</p></a>
+    <a asp-controller="Socios" asp-action="Index" class="feature-card"><span class="feature-icon">◉</span><h2>Socios</h2><p>Mantén una comunidad lectora al día.</p></a>
+    <a asp-controller="Prestamos" asp-action="Reporte" class="feature-card"><span class="feature-icon">↗</span><h2>Reportes</h2><p>Revisa el movimiento de préstamos.</p></a>
+</section>
+</div>

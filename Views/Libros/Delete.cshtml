@@ -1,0 +1,3 @@
+@model Demo.Models.Libro
+@{ ViewData["Title"] = "Retirar libro"; }
+<div class="form-page"><a class="back-link" asp-action="Index">← Volver al catálogo</a><div class="form-card danger-card"><span class="eyebrow">CONFIRMACIÓN</span><h1>¿Retirar este libro?</h1><p>Se ocultará del catálogo, pero su información se conserva para mantener la integridad de los préstamos.</p><div class="delete-book"><strong>@Model.Titulo</strong><span>@Model.AutorNombre · @Model.ISBN</span></div><form asp-action="Delete" method="post"><input asp-for="LibroId" type="hidden"/><div class="form-actions"><a asp-action="Index" class="btn btn-soft">Cancelar</a><button class="btn btn-danger" type="submit">Sí, retirar libro</button></div></form></div></div>

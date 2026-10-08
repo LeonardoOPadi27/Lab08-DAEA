@@ -1,0 +1,7 @@
+@model IEnumerable<Demo.Models.PrestamoReporte>
+@{ ViewData["Title"] = "Reporte de préstamos"; }
+<div class="page-heading"><div><span class="eyebrow">SEGUIMIENTO</span><h1>Reporte de préstamos</h1><p>Consulta los libros prestados en el periodo que necesitas.</p></div></div>
+<form method="get" class="filter-card"><div><label for="desde">Desde</label><input id="desde" type="date" name="desde" value="@ViewData["Desde"]" /></div><div><label for="hasta">Hasta</label><input id="hasta" type="date" name="hasta" value="@ViewData["Hasta"]" /></div><button class="btn btn-primary" type="submit">Aplicar filtro</button><a class="clear-search" asp-action="Reporte">Restablecer</a></form>
+@if ((bool?)ViewData["RangoInvalido"] == true) { <div class="alert alert-warning">La fecha inicial no puede ser posterior a la fecha final.</div> }
+<div class="catalog-table-wrap"><table class="table catalog-table"><thead><tr><th>SOCIO</th><th>LIBRO</th><th>FECHA LÍMITE</th><th class="text-end">ESTADO</th></tr></thead><tbody>@foreach (var item in Model) {<tr><td><strong>@item.Socio</strong><small class="cell-note">DNI @item.DNI</small></td><td class="book-title">@item.Libro</td><td>@item.FechaLimite.ToString("dd MMM, yyyy")</td><td class="text-end"><span class="status-badge @(item.Estado == "Devuelto" ? "status-returned" : "")">@item.Estado</span></td></tr>}</tbody></table></div>
+@if (!Model.Any()) { <div class="empty-state"><div>↗</div><h2>Sin préstamos en este rango</h2><p>Cambia las fechas para consultar otro periodo.</p></div> }

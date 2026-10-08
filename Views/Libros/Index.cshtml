@@ -1,0 +1,12 @@
+@model IEnumerable<Demo.Models.Libro>
+@{ ViewData["Title"] = "Catálogo"; var buscar = ViewData["Buscar"] as string; }
+<div class="page-heading">
+    <div><span class="eyebrow">COLECCIÓN</span><h1>Catálogo de libros</h1><p>Explora, busca y administra el inventario.</p></div>
+    <a class="btn btn-primary" asp-action="Create">+ Añadir libro</a>
+</div>
+@if (TempData["Exito"] is string mensaje) { <div class="alert alert-success alert-dismissible fade show" role="alert">@mensaje<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div> }
+<form method="get" class="search-bar" role="search"><input name="buscar" value="@buscar" placeholder="Buscar por título..." aria-label="Buscar por título" /><button class="btn btn-dark" type="submit">Buscar</button>@if (!string.IsNullOrWhiteSpace(buscar)){<a asp-action="Index" class="clear-search">Limpiar</a>}</form>
+<div class="catalog-table-wrap"><table class="table catalog-table"><thead><tr><th>LIBRO</th><th>AUTOR</th><th>ISBN</th><th class="text-center">STOCK</th><th class="text-end">ACCIONES</th></tr></thead><tbody>
+@foreach (var libro in Model) { <partial name="_LibroRow" model="libro" /> }
+</tbody></table></div>
+@if (!Model.Any()) { <div class="empty-state"><div>⌕</div><h2>No encontramos libros</h2><p>Prueba otro título o agrega un nuevo libro al catálogo.</p></div> }

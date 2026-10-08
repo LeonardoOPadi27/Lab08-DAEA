@@ -1,0 +1,6 @@
+@model IEnumerable<Demo.Models.Socio>
+@{ ViewData["Title"] = "Socios"; }
+<div class="page-heading"><div><span class="eyebrow">COMUNIDAD</span><h1>Socios de la biblioteca</h1><p>Personas registradas y habilitadas para pedir libros.</p></div><a class="btn btn-primary" asp-action="Create">+ Añadir socio</a></div>
+@if (TempData["Exito"] is string mensaje) { <div class="alert alert-success alert-dismissible fade show" role="alert">@mensaje<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div> }
+<div class="catalog-table-wrap"><table class="table catalog-table"><thead><tr><th>SOCIO</th><th>DNI</th><th>CORREO ELECTRÓNICO</th><th class="text-end">ESTADO</th></tr></thead><tbody>@foreach (var socio in Model) {<tr><td class="book-title">@socio.Nombre</td><td><span class="isbn">@socio.DNI</span></td><td>@(string.IsNullOrWhiteSpace(socio.Email) ? "—" : socio.Email)</td><td class="text-end"><span class="status-badge">Activo</span></td></tr>}</tbody></table></div>
+@if (!Model.Any()) { <div class="empty-state"><div>◉</div><h2>Aún no hay socios</h2><p>Registra el primer integrante de la comunidad.</p></div> }
