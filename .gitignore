@@ -1,0 +1,27 @@
+# Compilación .NET
+[Bb]in/
+[Oo]bj/
+artifacts/
+TestResults/
+
+# IDEs
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.rsuser
+*.sln.docstates
+
+# Configuración y secretos locales
+appsettings.Development.local.json
+appsettings.Local.json
+secrets.json
+*.pfx
+
+# Temporales y sistema operativo
+*.log
+*.tmp
+*.cache
+.DS_Store
+Thumbs.db
